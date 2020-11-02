@@ -16,7 +16,7 @@ spec:
         name: bot
         imagePullPolicy: Always 
         env:
-          - name: DISCORD_API_KEY
+          - name: DISCORD_API_TOKEN
             valueFrom:
               secretKeyRef:
                 name: discord-api-key
