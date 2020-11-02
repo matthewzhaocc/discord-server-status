@@ -21,3 +21,5 @@ spec:
               secretKeyRef:
                 name: discord-api-key
                 key: DISCORD_API_KEY
+      imagePullSecrets:
+        - name: regcred
