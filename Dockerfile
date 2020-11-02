@@ -3,4 +3,4 @@ RUN mkdir /app
 WORKDIR /app
 COPY . .
 RUN pip3 install -r requirements.txt
-CMD bot.py
+CMD python3 bot.py
