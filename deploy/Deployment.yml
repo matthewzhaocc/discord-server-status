@@ -1,0 +1,33 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: pastebin
+spec:
+  selector:
+    matchLabels:
+      app: pastebin
+  template:
+    metadata:
+      labels:
+        app: pastebin
+    spec:
+      containers:
+      - image: registry.internal.impertrix.com/herelmao/saas/pastebin:latest 
+        name: pastebin
+        env:
+        - name: DB_HOST
+          value: "mongodb"
+        - name: DB_PORT
+          value: "27017"
+        - name: DB_NAME
+          value: "pastebin"
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 250Mi
+        imagePullPolicy: Always 
+      imagePullSecrets:
+        - name: regcred
