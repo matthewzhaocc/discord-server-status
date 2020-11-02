@@ -1,17 +1,23 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: pastebin
+  name: bot
 spec:
   selector:
     matchLabels:
-      app: pastebin
+      app: bot
   template:
     metadata:
       labels:
-        app: pastebin
+        app: bot
     spec:
       containers:
       - image: nginx:latest
-        name: pastebin
+        name: bot
         imagePullPolicy: Always 
+        env:
+          - name: DISCORD_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: discord-api-key
+                key: DISCORD_API_KEY
